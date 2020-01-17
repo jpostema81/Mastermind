@@ -20,11 +20,23 @@ table * {
 table thead {
     background: #333;
     color: white;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 table tfoot {
     background: rgba(0, 0, 255, 0.3);
+}
+
+td > button {
+    width: 100% !important;
+    background: #333;
+    color: white;
+}
+
+td > button:active {
+    background: #fff;
+    color: #333;
+    transition: 250ms;
 }
 
 table tfoot .dot {

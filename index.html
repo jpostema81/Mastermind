@@ -19,7 +19,25 @@
     </thead>
 
     <tbody>
-    <tr>
+    <tr class="row-1">
+        <td class="col-1">
+            <div class="dot"></div>
+        </td>
+
+        <td class="col-2">
+            <div class="dot"></div>
+        </td>
+
+        <td class="col-3">
+            <div class="dot"></div>
+        </td>
+
+        <td class="col-4">
+            <div class="dot"></div>
+        </td>
+    </tr>
+
+    <tr class="row-2">
         <td>
             <div class="dot"></div>
         </td>
@@ -37,7 +55,7 @@
         </td>
     </tr>
 
-    <tr>
+    <tr class="row-3">
         <td>
             <div class="dot"></div>
         </td>
@@ -55,7 +73,7 @@
         </td>
     </tr>
 
-    <tr>
+    <tr class="row-4">
         <td>
             <div class="dot"></div>
         </td>
@@ -73,7 +91,7 @@
         </td>
     </tr>
 
-    <tr>
+    <tr class="row-5">
         <td>
             <div class="dot"></div>
         </td>
@@ -91,7 +109,7 @@
         </td>
     </tr>
 
-    <tr>
+    <tr class="row-6">
         <td>
             <div class="dot"></div>
         </td>
@@ -109,7 +127,7 @@
         </td>
     </tr>
 
-    <tr>
+    <tr class="row-7">
         <td>
             <div class="dot"></div>
         </td>
@@ -127,7 +145,7 @@
         </td>
     </tr>
 
-    <tr>
+    <tr class="row-8">
         <td>
             <div class="dot"></div>
         </td>
@@ -145,7 +163,7 @@
         </td>
     </tr>
 
-    <tr>
+    <tr class="row-9">
         <td>
             <div class="dot"></div>
         </td>
@@ -163,7 +181,7 @@
         </td>
     </tr>
 
-    <tr>
+    <tr class="row-10">
         <td>
             <div class="dot"></div>
         </td>
@@ -181,7 +199,7 @@
         </td>
     </tr>
 
-    <tr>
+    <tr class="row-11">
         <td>
             <div class="dot"></div>
         </td>
@@ -199,25 +217,7 @@
         </td>
     </tr>
 
-    <tr>
-        <td>
-            <div class="dot"></div>
-        </td>
-
-        <td>
-            <div class="dot"></div>
-        </td>
-
-        <td>
-            <div class="dot"></div>
-        </td>
-
-        <td>
-            <div class="dot"></div>
-        </td>
-    </tr>
-
-    <tr>
+    <tr class="row-12">
         <td>
             <div class="dot"></div>
         </td>
@@ -239,19 +239,31 @@
     <tfoot>
     <tr>
         <td>
-            <div class="dot dot-red"></div>
+            <div class="dot dot-red" id="btnRed"></div>
         </td>
 
         <td>
-            <div class="dot dot-green"></div>
+            <div class="dot dot-green" id="btnGreen"></div>
         </td>
 
         <td>
-            <div class="dot dot-blue"></div>
+            <div class="dot dot-blue" id="btnBlue"></div>
         </td>
 
         <td>
-            <div class="dot dot-yellow"></div>
+            <div class="dot dot-yellow" id="btnYellow"></div>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="4">
+            <button type="button" id="btnCheck">Check</button>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="4">
+            <button type="button" id="btnReset">Reset</button>
         </td>
     </tr>
     </tfoot>
@@ -259,6 +271,6 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="./js/main.js"></script>
+<script src="./js/main.js" defer></script>
 </body>
 </html>
