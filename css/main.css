@@ -3,6 +3,10 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
 }
 
 table * {
@@ -19,20 +23,29 @@ table thead {
     font-size: 18px;
 }
 
+table tfoot {
+    background: rgba(0, 0, 255, 0.3);
+}
+
+table tfoot .dot {
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px #333;
+    outline: none;
+}
+
+table tfoot .dot:focus,
+table tfoot .dot:active {
+    box-shadow: inset 1px 1px 1px 1px #333;
+}
+
 table .dot {
     height: 25px;
     width: 25px;
-    cursor: pointer;
 }
 
 .dot {
     border: 1px solid #333;
     border-radius: 50%;
-}
-
-.dot:hover {
-    background: #333;
-    border-color: #999;
 }
 
 .dot.dot-red {
