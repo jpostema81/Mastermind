@@ -5,6 +5,9 @@ const btnGreen = $('#btnGreen');
 const btnBlue = $('#btnBlue');
 const btnYellow = $('#btnYellow');
 
+let code;
+let row;
+
 $(document).ready(function () {
     generate();
 
@@ -13,7 +16,7 @@ $(document).ready(function () {
 });
 
 function generate() {
-    // TODO: Write generate().
+    code = Math.floor(Math.random()) + 1
 }
 
 function check() {
