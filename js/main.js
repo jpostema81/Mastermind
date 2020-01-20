@@ -15,10 +15,6 @@ $(document).ready(function () {
 
     btnCheck.on('click', () => check());
     btnReset.on('click', () => reset());
-
-    btnRed.on('click', () => {
-        $(`.row-{}`)
-    });
 });
 
 function generate() {
