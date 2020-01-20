@@ -8,266 +8,277 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-<table>
-    <thead>
-    <tr>
-        <th>One</th>
-        <th>Two</th>
-        <th>Three</th>
-        <th>Four</th>
-    </tr>
-    </thead>
+<div class="status" hidden>
+    <div class="container">
+        <span class="status-message" id="statusMessage">{{ STATUS }}</span>
+        <button type="button" class="btn" id="btnStatusReset">Reset</button>
+    </div>
+</div>
 
-    <tbody>
-    <tr class="row row-1">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <th>One</th>
+            <th>Two</th>
+            <th>Three</th>
+            <th>Four</th>
+        </tr>
+        </thead>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tbody>
+        <tr class="row row-1">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tr class="row row-2">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tr class="row row-2">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tr class="row row-3">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tr class="row row-3">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tr class="row row-4">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tr class="row row-4">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tr class="row row-5">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tr class="row row-5">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tr class="row row-6">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tr class="row row-6">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tr class="row row-7">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tr class="row row-7">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tr class="row row-8">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tr class="row row-8">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tr class="row row-9">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tr class="row row-9">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tr class="row row-10">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tr class="row row-10">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tr class="row row-11">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tr class="row row-11">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tr class="row row-12">
-        <td class="col col-1">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
 
-        <td class="col col-2">
-            <div class="dot"></div>
-        </td>
+        <tr class="row row-12">
+            <td class="col col-1">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-3">
-            <div class="dot"></div>
-        </td>
+            <td class="col col-2">
+                <div class="dot"></div>
+            </td>
 
-        <td class="col col-4">
-            <div class="dot"></div>
-        </td>
-    </tr>
-    </tbody>
+            <td class="col col-3">
+                <div class="dot"></div>
+            </td>
 
-    <tfoot>
-    <tr>
-        <td>
-            <div class="dot dot-red" id="btnRed"></div>
-        </td>
+            <td class="col col-4">
+                <div class="dot"></div>
+            </td>
+        </tr>
+        </tbody>
 
-        <td>
-            <div class="dot dot-green" id="btnGreen"></div>
-        </td>
+        <tfoot>
+        <tr>
+            <td>
+                <div class="dot dot-red" id="btnRed" color="red"></div>
+            </td>
 
-        <td>
-            <div class="dot dot-blue" id="btnBlue"></div>
-        </td>
+            <td>
+                <div class="dot dot-green" id="btnGreen" color="green"></div>
+            </td>
 
-        <td>
-            <div class="dot dot-yellow" id="btnYellow"></div>
-        </td>
-    </tr>
+            <td>
+                <div class="dot dot-blue" id="btnBlue" color="blue"></div>
+            </td>
 
-    <tr>
-        <td colspan="4">
-            <button type="button" id="btnCheck">Check</button>
-        </td>
-    </tr>
+            <td>
+                <div class="dot dot-yellow" id="btnYellow" color="yellow"></div>
+            </td>
+        </tr>
 
-    <tr>
-        <td colspan="4">
-            <button type="button" id="btnReset">Reset</button>
-        </td>
-    </tr>
-    </tfoot>
-</table>
+        <tr>
+            <td colspan="4">
+                <button type="button" class="btn" id="btnCheck">Check</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="4">
+                <button type="button" class="btn" id="btnReset">Reset</button>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+    <h3>Attempts left: <span id="attemptsLeft">0</span></h3>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
