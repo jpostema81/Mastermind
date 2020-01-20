@@ -21,6 +21,7 @@ function generate() {
     code = Math.floor(Math.random()) + 1
 }
 
+// Should perform a check on the current row, to see if the colors correspond to the generated code.
 function check() {
     let tempCode = undefined;
     let divs = $(`.row-1`).children('.col').children('div');
