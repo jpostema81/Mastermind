@@ -5,7 +5,7 @@ const btnGreen = $('#btnGreen');
 const btnBlue = $('#btnBlue');
 const btnYellow = $('#btnYellow');
 const attemptsLeftCounter = $('#attemptsLeft');
-const btnStatusReset = $('#btnStatusReset');
+const btnStatusExit = $('#btnStatusExit');
 const statusMessage = $('#statusMessage');
 
 let code;
@@ -14,6 +14,8 @@ let currentRow = 1;
 let currentCol = 1;
 
 $(document).ready(function () {
+    $('.status').hide();
+
     reset();
     generate();
     update();
@@ -36,7 +38,7 @@ function generate() {
 // Should perform a check on the current row, to see if the colors correspond to the generated code.
 function check() {
     if (attemptsLeft <= 0) {
-        showStatus('Game Over!');
+        showStatus('Game Over!', true);
         return;
     }
 
@@ -53,27 +55,30 @@ function check() {
     }
 
     if (tempCode.length === 0) {
-        alert('Please enter a combination.');
+        showStatus('Enter a combination first.', false);
         return;
     }
 
     if (tempCode === code) {
-        alert("You won.");
+        showStatus('You have won!', true);
     } else if (currentRow < 12 && attemptsLeft-- > 0) {
-        alert("Wrong. Try again.");
+        showStatus('Try again.', false);
 
         currentRow++;
         update();
     }
 }
 
-function showStatus(message) {
+function showStatus(message, ended) {
     let status = $('.status');
     statusMessage.text(message);
     status.show();
 
-    btnStatusReset.on('click', function (e) {
-        reset();
+    btnStatusExit.on('click', function (e) {
+        if (ended === true) {
+            reset();
+        }
+
         status.hide();
     });
 }
@@ -84,6 +89,7 @@ function update() {
 
 function reset() {
     currentRow = 1;
+    currentCol = 1;
     $(`.row`).children(`.col`).children('div').removeClass('dot-red dot-green dot-blue dot-yellow');
 }
 
