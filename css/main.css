@@ -114,3 +114,30 @@ html, body {
 .container .dot.dot-yellow {
     background: yellow;
 }
+
+.row-status {
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: rgba(255, 255, 0, .3);
+}
+
+.row-status .mini-dot {
+    width: 10px !important;
+    height: 10px !important;
+    border: 1px solid #333;
+    border-radius: 50%;
+    z-index: 999;
+}
+
+.mini-dot.correct {
+    background: black;
+    border-color: #fff;
+}
+
+.mini-dot.incorrect {
+    background: white;
+    border-color: #333;
+}

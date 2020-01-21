@@ -16,12 +16,16 @@ let currentCol = 1;
 $(document).ready(function () {
     $('.status').hide();
 
-    reset();
-    generate();
+    reset(true);
     update();
 
     btnCheck.on('click', () => check());
-    btnReset.on('click', () => reset());
+    btnReset.on('click', () => reset(false));
+
+    $(`.row-${currentRow} .dot`).on('click', function (e) {
+        $(this).removeClass('dot-red dot-green dot-blue dot-yellow');
+        currentCol--;
+    });
 
     $('#btnRed, #btnGreen, #btnBlue, #btnYellow').on('click', function (e) {
         e.preventDefault();
@@ -32,12 +36,10 @@ $(document).ready(function () {
 
 function generate() {
     code = [Color.random(), Color.random(), Color.random(), Color.random()];
-    console.log(code);
 }
 
-// Should perform a check on the current row, to see if the colors correspond to the generated code.
 function check() {
-    if (attemptsLeft <= 0) {
+    if (attemptsLeft <= 1) {
         showStatus('Game Over!', true);
         return;
     }
@@ -46,11 +48,10 @@ function check() {
     let cols = $(`.row-${currentRow}`).children('.col');
 
     for (let i = 0; i < cols.length; i++) {
-        // FIXME: Doesn't work, have to figure out why.
         let div = $(cols[i]).children('div')[0];
 
         if (div.classList.length > 1) {
-            tempCode.push(Color.valueOf(div.classList[1].substring(5)).id);
+            tempCode.push(Color.valueOf(div.classList[1].substring(4)));
         }
     }
 
@@ -59,12 +60,18 @@ function check() {
         return;
     }
 
-    if (tempCode === code) {
+    if (tempCode.length !== code.length) {
+        showStatus("Complete the sequence first.", false);
+        return;
+    }
+
+    if (JSON.stringify(tempCode) === JSON.stringify(code)) {
         showStatus('You have won!', true);
-    } else if (currentRow < 12 && attemptsLeft-- > 0) {
+    } else if (currentRow <= 12 && attemptsLeft-- > 0) {
         showStatus('Try again.', false);
 
         currentRow++;
+        currentCol = 1;
         update();
     }
 }
@@ -75,8 +82,8 @@ function showStatus(message, ended) {
     status.show();
 
     btnStatusExit.on('click', function (e) {
-        if (ended === true) {
-            reset();
+        if (ended) {
+            reset(true);
         }
 
         status.hide();
@@ -87,10 +94,24 @@ function update() {
     attemptsLeftCounter.text(attemptsLeft);
 }
 
-function reset() {
-    currentRow = 1;
-    currentCol = 1;
-    $(`.row`).children(`.col`).children('div').removeClass('dot-red dot-green dot-blue dot-yellow');
+// FIXME: Not working correctly.
+function reset(hardReset) {
+    // if (sessionStorage.getItem("reset-clicked") === undefined || sessionStorage.getItem("reset-clicked") === String(1)) {
+    //     currentCol = 1;
+    //     $(`.row-${currentRow}`).children(`.col`).children('div').removeClass('dot-red dot-green dot-blue dot-yellow');
+    // } else if (sessionStorage.getItem("reset-clicked") === String(2)) {
+        currentRow = 1;
+        currentCol = 1;
+        $(`.row`).children(`.col`).children('div').removeClass('dot-red dot-green dot-blue dot-yellow');
+
+        if (hardReset) {
+            attemptsLeft = 12;
+            generate();
+        }
+    // }
+    //
+    // let resetClicked = sessionStorage.getItem("reset-clicked");
+    // sessionStorage.setItem("reset-clicked", resetClicked === null ? 1 : String(parseInt(resetClicked) + 1));
 }
 
 class Color {
