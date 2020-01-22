@@ -22,6 +22,36 @@ $(document).ready(function () {
     btnCheck.on('click', () => check());
     btnReset.on('click', () => reset(false));
 
+    $(document).on('keydown', (e) => {
+        let key = (e.keyCode ? e.keyCode : e.which);
+
+        switch (key) {
+            // If Enter is pressed.
+            case 13:
+                return attemptsLeft > 0 ? ($('.status').is(":hidden") ? check() : $('.status').hide()) : reset(true);
+
+            // If Backspace is pressed.
+            case 8:
+                return reset(false);
+
+            // If '1' is pressed.
+            case 49:
+                return $('#btnRed').click();
+
+            // If '2' is pressed.
+            case 50:
+                return $('#btnGreen').click();
+
+            // If '3' is pressed.
+            case 51:
+                return $('#btnBlue').click();
+
+            // If '4' is pressed.
+            case 52:
+                return $('#btnYellow').click();
+        }
+    });
+
     $(`.row-${currentRow} .dot`).on('click', function (e) {
         $(this).removeClass('dot-red dot-green dot-blue dot-yellow');
         currentCol--;
@@ -100,14 +130,15 @@ function reset(hardReset) {
     //     currentCol = 1;
     //     $(`.row-${currentRow}`).children(`.col`).children('div').removeClass('dot-red dot-green dot-blue dot-yellow');
     // } else if (sessionStorage.getItem("reset-clicked") === String(2)) {
-        currentRow = 1;
-        currentCol = 1;
-        $(`.row`).children(`.col`).children('div').removeClass('dot-red dot-green dot-blue dot-yellow');
+    currentRow = 1;
+    currentCol = 1;
+    $(`.row`).children(`.col`).children('div').removeClass('dot-red dot-green dot-blue dot-yellow');
 
-        if (hardReset) {
-            attemptsLeft = 12;
-            generate();
-        }
+    if (hardReset) {
+        attemptsLeft = 12;
+        generate();
+        $('.status').hide();
+    }
     // }
     //
     // let resetClicked = sessionStorage.getItem("reset-clicked");
