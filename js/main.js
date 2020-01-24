@@ -104,10 +104,9 @@ function check() {
         return;
     }
 
-    // if (JSON.stringify(tempCode) === JSON.stringify(code)) {
-    //     showStatus('You have won!', true);
-    // } else
-    if (currentRow <= 12 && attemptsLeft-- > 0) {
+    if (JSON.stringify(tempCode) === JSON.stringify(code)) {
+        showStatus('You have won!', true);
+    } else if (currentRow <= 12 && attemptsLeft-- > 0) {
         for (let i = 0; i < tempCode.length; i++) {
             let dot = $(`.row-${currentRow} .mini-dot-${i + 1}`);
 
