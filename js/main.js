@@ -7,6 +7,7 @@ const btnYellow = $('#btnYellow');
 const attemptsLeftCounter = $('#attemptsLeft');
 const btnStatusExit = $('#btnStatusExit');
 const statusMessage = $('#statusMessage');
+const status = $('.status');
 
 let code;
 let attemptsLeft = 12;
@@ -14,7 +15,7 @@ let currentRow = 1;
 let currentCol = 1;
 
 $(document).ready(function () {
-    $('.status').hide();
+    status.hide();
 
     reset(true);
     update();
@@ -28,7 +29,7 @@ $(document).ready(function () {
         switch (key) {
             // If Enter is pressed.
             case 13:
-                return attemptsLeft > 0 ? ($('.status').is(":hidden") ? check() : $('.status').hide()) : reset(true);
+                return attemptsLeft > 0 ? (status.is(":hidden") ? check() : status.hide()) : reset(true);
 
             // If Backspace is pressed.
             case 8:
@@ -66,6 +67,7 @@ $(document).ready(function () {
 
 function generate() {
     code = [Color.random(), Color.random(), Color.random(), Color.random()];
+    console.log(code);
 }
 
 function check() {
@@ -81,7 +83,9 @@ function check() {
         let div = $(cols[i]).children('div')[0];
 
         if (div.classList.length > 1) {
-            tempCode.push(Color.valueOf(div.classList[1].substring(4)));
+            let color = Color.valueOf(div.classList[1].substring(4));
+
+            tempCode.push(color);
         }
     }
 
@@ -98,6 +102,13 @@ function check() {
     if (JSON.stringify(tempCode) === JSON.stringify(code)) {
         showStatus('You have won!', true);
     } else if (currentRow <= 12 && attemptsLeft-- > 0) {
+        for (let i = 0; i < tempCode.length; i++) {
+            // FIXME: Doesn't work correctly due to incorrectly selecting the 'incorrect' parts of the code.
+            if (isInCode(tempCode[i])) {
+                $(`.row-${currentRow} .mini-dot-${i}`).addClass('incorrect');
+            }
+        }
+
         showStatus('Try again.', false);
 
         currentRow++;
@@ -107,7 +118,6 @@ function check() {
 }
 
 function showStatus(message, ended) {
-    let status = $('.status');
     statusMessage.text(message);
     status.show();
 
@@ -137,12 +147,22 @@ function reset(hardReset) {
     if (hardReset) {
         attemptsLeft = 12;
         generate();
-        $('.status').hide();
+        status.hide();
     }
     // }
     //
     // let resetClicked = sessionStorage.getItem("reset-clicked");
     // sessionStorage.setItem("reset-clicked", resetClicked === null ? 1 : String(parseInt(resetClicked) + 1));
+}
+
+function isInCode(color) {
+    for (let i = 0; i < code.length; i++) {
+        if (code[i] === color) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 class Color {

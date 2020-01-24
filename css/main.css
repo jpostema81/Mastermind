@@ -70,6 +70,10 @@ html, body {
     font-size: 14px;
 }
 
+.container #attemptsLeft {
+    margin-right: 40px;
+}
+
 .container table tfoot {
     background: rgba(0, 0, 255, 0.3);
 }
