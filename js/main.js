@@ -152,7 +152,8 @@ function reset(hardReset) {
     // } else if (sessionStorage.getItem("reset-clicked") === String(2)) {
     currentRow = 1;
     currentCol = 1;
-    $(`.row`).children(`.col`).children('div').removeClass('dot-red dot-green dot-blue dot-yellow');
+    $(`.row div`).removeClass('dot-red dot-green dot-blue dot-yellow');
+    $(`.mini-dot`).removeClass('correct incorrect');
 
     if (hardReset) {
         attemptsLeft = 12;
