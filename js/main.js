@@ -5,6 +5,7 @@ const btnGreen = $('#btnGreen');
 const btnBlue = $('#btnBlue');
 const btnYellow = $('#btnYellow');
 const attemptsLeftCounter = $('#attemptsLeft');
+const btnExit = $('#btnExit');
 const btnStatusExit = $('#btnStatusExit');
 const statusMessage = $('#statusMessage');
 const status = $('.status');
@@ -63,6 +64,10 @@ $(document).ready(function () {
 
         $(`.row-${currentRow}`).children(`.col-${currentCol++}`).children('div').addClass(`dot-${$(this).attr('color')}`);
     });
+
+    btnExit.on('click', function (e) {
+        reset(true);
+    })
 });
 
 function generate() {
@@ -99,13 +104,19 @@ function check() {
         return;
     }
 
-    if (JSON.stringify(tempCode) === JSON.stringify(code)) {
-        showStatus('You have won!', true);
-    } else if (currentRow <= 12 && attemptsLeft-- > 0) {
+    // if (JSON.stringify(tempCode) === JSON.stringify(code)) {
+    //     showStatus('You have won!', true);
+    // } else
+    if (currentRow <= 12 && attemptsLeft-- > 0) {
         for (let i = 0; i < tempCode.length; i++) {
-            // FIXME: Doesn't work correctly due to incorrectly selecting the 'incorrect' parts of the code.
-            if (isInCode(tempCode[i])) {
-                $(`.row-${currentRow} .mini-dot-${i}`).addClass('incorrect');
+            let dot = $(`.row-${currentRow} .mini-dot-${i + 1}`);
+
+            if (tempCode[i] === code[i]) {
+                dot.addClass('correct');
+            }
+
+            if (!dot.hasClass('correct') && code.some(v => v === tempCode[i])) {
+                dot.addClass('incorrect');
             }
         }
 
@@ -153,16 +164,6 @@ function reset(hardReset) {
     //
     // let resetClicked = sessionStorage.getItem("reset-clicked");
     // sessionStorage.setItem("reset-clicked", resetClicked === null ? 1 : String(parseInt(resetClicked) + 1));
-}
-
-function isInCode(color) {
-    for (let i = 0; i < code.length; i++) {
-        if (code[i] === color) {
-            return true;
-        }
-    }
-
-    return false;
 }
 
 class Color {

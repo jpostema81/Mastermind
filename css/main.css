@@ -137,11 +137,11 @@ html, body {
 }
 
 .mini-dot.correct {
-    background: black;
-    border-color: #fff;
+    background: rgba(0, 255, 0, 0.8);
+    border-color: #333;
 }
 
 .mini-dot.incorrect {
-    background: white;
+    background: rgba(255, 0, 0, 0.8);
     border-color: #333;
 }
