@@ -10,7 +10,8 @@ const btnStatusExit = $('#btnStatusExit');
 const statusMessage = $('#statusMessage');
 const status = $('.status');
 
-let code;
+let code = [];
+let signals = [];
 let attemptsLeft = 12;
 let currentRow = 1;
 let currentCol = 1;
@@ -108,18 +109,16 @@ function check() {
         showStatus('You have won!', true);
     } else if (currentRow <= 12 && attemptsLeft-- > 0) {
         for (let i = 0; i < tempCode.length; i++) {
-            let dot = $(`.row-${currentRow} .mini-dot-${i + 1}`);
-
             if (tempCode[i] === code[i]) {
-                dot.addClass('correct');
+                signals.push('correct');
+                continue;
             }
 
-            if (!dot.hasClass('correct') && code.some(v => v === tempCode[i])) {
-                dot.addClass('incorrect');
+            if (signals[i] !== 'correct' && code.some(v => v === tempCode[i])) {
+                signals.push('incorrect');
+                continue;
             }
         }
-
-        showStatus('Try again.', false);
 
         currentRow++;
         currentCol = 1;
@@ -142,6 +141,12 @@ function showStatus(message, ended) {
 
 function update() {
     attemptsLeftCounter.text(attemptsLeft);
+    shuffle(signals);
+
+    for (let i = 0; i < signals.length; i++) {
+        let dot = $(`.row-${currentRow} .mini-dot-${i}`);
+        dot.addClass(signals[i]);
+    }
 }
 
 // FIXME: Not working correctly.
@@ -165,6 +170,19 @@ function reset(hardReset) {
     // let resetClicked = sessionStorage.getItem("reset-clicked");
     // sessionStorage.setItem("reset-clicked", resetClicked === null ? 1 : String(parseInt(resetClicked) + 1));
 }
+
+function shuffle(a) {
+    let j, x, i;
+
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+
+    return a;
+};
 
 class Color {
     static RED = {id: 1, name: 'red'};
