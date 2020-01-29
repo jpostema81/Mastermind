@@ -144,7 +144,7 @@ function update() {
     shuffle(signals);
 
     for (let i = 0; i < signals.length; i++) {
-        let dot = $(`.row-${currentRow} .mini-dot-${i}`);
+        let dot = $(`.row-${currentRow} .mini-dot-${i + 1}`);
         dot.addClass(signals[i]);
     }
 }
