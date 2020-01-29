@@ -71,11 +71,13 @@ $(document).ready(function () {
     })
 });
 
+// kies duidelijke functienaam, bijv. generateCode
 function generate() {
     code = [Color.random(), Color.random(), Color.random(), Color.random()];
     console.log(code);
 }
 
+// kies duidelijke functienaam, bijv. checkCode
 function check() {
     if (attemptsLeft <= 1) {
         showStatus('Game Over!', true);
@@ -108,6 +110,7 @@ function check() {
     if (JSON.stringify(tempCode) === JSON.stringify(code)) {
         showStatus('You have won!', true);
     } else if (currentRow <= 12 && attemptsLeft-- > 0) {
+        // onderzoek eens tijdens het spelen van het spel (bijv. mbv console.log of debugger) wat de waarde van het signals array wordt tijdens het spelverloop!
         for (let i = 0; i < tempCode.length; i++) {
             if (tempCode[i] === code[i]) {
                 signals.push('correct');
@@ -144,6 +147,7 @@ function update() {
     shuffle(signals);
 
     for (let i = 0; i < signals.length; i++) {
+        // in onderstaande regel gaat iets niet helemaal goed. Heeft iets te maken met indexering! Check mbv console.log en / of debugger
         let dot = $(`.row-${currentRow} .mini-dot-${i + 1}`);
         dot.addClass(signals[i]);
     }
@@ -185,6 +189,7 @@ function shuffle(a) {
 };
 
 class Color {
+    // static properties werken alleen in Chrome (!)
     static RED = {id: 1, name: 'red'};
     static GREEN = {id: 2, name: 'green'};
     static BLUE = {id: 3, name: 'blue'};
